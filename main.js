@@ -45,7 +45,12 @@ var gravity;
 var radius;
 var paused = false;
 
-function onresize() {
+window.onload = function() {
+
+  var ratio = window.devicePixelRatio || 1;
+  var help = document.getElementById('help');
+
+  function onresize() {
     var width = innerWidth;
     var height = innerHeight;
 
@@ -56,7 +61,15 @@ function onresize() {
     gl.canvas.style.height = height + "px";
 
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-}
+
+    gl.matrixMode(gl.PROJECTION);
+    gl.loadIdentity();
+    gl.perspective(45, gl.canvas.width / gl.canvas.height, 0.01, 100);
+
+    gl.matrixMode(gl.MODELVIEW);
+
+    draw();
+  }
 
   document.body.appendChild(gl.canvas);
   gl.clearColor(0, 0, 0, 0);
