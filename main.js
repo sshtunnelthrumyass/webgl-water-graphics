@@ -28,8 +28,13 @@ var gl = GL.create();
 var water;
 var cubemap;
 var renderer;
-var angleX = -25;
-var angleY = -200.5;
+var angleX = -18;
+var angleY = -215;
+
+var targetAngleX = angleX;
+var targetAngleY = angleY;
+
+var cameraTime = 0;
 
 // Sphere physics info
 var useSpherePhysics = false;
