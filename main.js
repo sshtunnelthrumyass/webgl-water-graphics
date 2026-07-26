@@ -65,7 +65,7 @@ window.onload = function() {
   }
 
   document.body.appendChild(gl.canvas);
-  gl.clearColor(0.04, 0.08, 0.14, 1);
+  gl.clearColor(0, 0, 0, 0);
 
   water = new Water();
   renderer = new Renderer();
