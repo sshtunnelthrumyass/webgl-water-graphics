@@ -31,7 +31,107 @@ Released under the MIT license
       small { font-size: 8px; line-height: 10px; }
       #help { width: 100px; font-size: 10px; line-height: 12px; }
     }
-  </style>
+  <style type="text/css">
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font: 13px/140% Arial, sans-serif;
+    color: white;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -30px;
+    background: url("mountainsbg.png") center center / cover no-repeat;
+    filter: blur(4px) brightness(0.8) saturate(1.1);
+    transform: scale(1.08);
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(5,10,20,0.15),
+        rgba(5,10,20,0.35)
+    );
+    z-index: -1;
+}
+
+a {
+    color: inherit;
+    cursor: pointer;
+}
+
+img {
+    display: none;
+}
+
+ul {
+    padding: 0 0 0 20px;
+}
+
+h1 {
+    font: bold italic 30px/30px Georgia;
+    text-align: center;
+}
+
+h2 {
+    font: bold italic 17px/17px Georgia;
+    padding-top: 10px;
+}
+
+small {
+    display: block;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+canvas {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+}
+
+#help {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 280px;
+    padding-right: 20px;
+    overflow: auto;
+    background: rgba(0,0,0,.18);
+    backdrop-filter: blur(10px);
+}
+
+#loading {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    right: 300px;
+    text-align: center;
+    margin-top: -8px;
+}
+
+@media (max-width: 600px) {
+    small {
+        font-size: 8px;
+        line-height: 10px;
+    }
+
+    #help {
+        width: 100px;
+        font-size: 10px;
+        line-height: 12px;
+    }
+}
+</style>
 </head><body>
   <div id="loading">Loading...</div>
   <div id="help">
