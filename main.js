@@ -167,12 +167,17 @@ window.onload = function() {
         if (paused) renderer.updateCaustics(water);
         break;
       }
-      case MODE_ORBIT_CAMERA: {
-        angleY -= x - oldX;
-        angleX -= y - oldY;
-        angleX = Math.max(-89.999, Math.min(89.999, angleX));
-        break;
-      }
+case MODE_ORBIT_CAMERA: {
+    targetAngleY -= x - oldX;
+    targetAngleX -= y - oldY;
+
+    targetAngleX = Math.max(
+        -70,
+        Math.min(20, targetAngleX)
+    );
+
+    break;
+}
     }
     oldX = x;
     oldY = y;
@@ -232,6 +237,18 @@ window.onload = function() {
   function update(seconds) {
     if (seconds > 1) return;
     frame += seconds * 2;
+    cameraTime += seconds;
+
+// idle cinematic orbit
+targetAngleY += seconds * 2.0;
+
+// smooth interpolation
+angleX += (targetAngleX - angleX) * 0.08;
+angleY += (targetAngleY - angleY) * 0.08;
+
+// tiny breathing motion
+angleX += Math.sin(cameraTime * 0.6) * 0.015;
+angleY += Math.cos(cameraTime * 0.35) * 0.01;
 
     if (mode == MODE_MOVE_SPHERE) {
       // Start from rest when the player releases the mouse after moving the sphere
@@ -270,7 +287,11 @@ window.onload = function() {
 
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     gl.loadIdentity();
-    gl.translate(0, 0, -4);
+    gl.translate(
+    Math.sin(cameraTime * 0.45) * 0.03,
+    Math.cos(cameraTime * 0.35) * 0.015,
+    -4
+);
     gl.rotate(-angleX, 1, 0, 0);
     gl.rotate(-angleY, 0, 1, 0);
     gl.translate(0, 0.5, 0);
