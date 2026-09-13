@@ -5,5 +5,5 @@
 
 http://madebyevan.com/webgl-water/ --original
 
-https://sshtunnelthrumyass.github.io/webgl-water-graphics/ --updated
+[https://sshtunnelthrumyass.github.io/webgl-water-graphics/](https://sshtunnelthrumyass.github.io/webgl-water-graphics/) --updated
 
