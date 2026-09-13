@@ -3,5 +3,7 @@
 
 # WebGL Water Demo
 
-http://madebyevan.com/webgl-water/
+http://madebyevan.com/webgl-water/ --original
+
+https://sshtunnelthrumyass.github.io/webgl-water-graphics/ --updated
 
